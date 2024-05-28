@@ -43,7 +43,7 @@ client.once(Events.ClientReady, (readyClient) => {
 
 async function greeting() {
   var date = new Date();
-  if (date.getHours() === 23 && date.getMinutes() === 0) {
+  if (date.getHours() === 6 && date.getMinutes() === 50) {
     client.channels.cache
       .get("981371460184571986")
       .channel.send(`${await daily()}`);
