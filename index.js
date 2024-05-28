@@ -43,10 +43,10 @@ client.once(Events.ClientReady, (readyClient) => {
 
 async function greeting() {
   var date = new Date();
-  if (date.getHours() === 13 && date.getMinutes() === 30) {
+  if (date.getHours() === 23 && date.getMinutes() === 0) {
     client.channels.cache
       .get("981371460184571986")
-      .channel.sendMessage(`${await daily()}`);
+      .send(`${await daily()}`);
     console.info(`Daily greeting sent! Post time: ${Date()}`);
   }
 }
