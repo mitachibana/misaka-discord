@@ -46,7 +46,7 @@ async function greeting() {
   if (date.getHours() === 13 && date.getMinutes() === 20) {
     client.channels.cache
       .get("981371460184571986")
-      .channel.send(`${await daily()}`);
+      .channel.sendMessage(`${await daily()}`);
     console.info(`Daily greeting sent! Post time: ${Date()}`);
   }
 }
