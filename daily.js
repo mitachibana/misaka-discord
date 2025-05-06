@@ -1,26 +1,36 @@
+const { tokenWolf, tokenExchange } = require("./config.json");
+
 async function daily() {
-  const wolfdata = await fetch(
-    "http://api.wolframalpha.com/v2/query?appid=VYG3PE-6XWXW8E7AK&input=today%20nagano&output=json&ip=138.199.21.39"
+  const wolfData = await fetch(
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=today%20nagano&output=json&ip=138.199.21.39`
   );
-  const astronomy = await wolfdata.json();
-  const response = await fetch(
-    "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/nagano%20city?unitGroup=metric&key=65RFGH2XZNTJ66GAHZQQFXEC8&contentType=json"
+  const astronomy = await wolfData.json();
+  const wolfTime1 = await fetch(
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=may+6+2025&output=json`
   );
-  const nagano = await response.json();
+  const gBannerTime = await wolfTime1.json();
+  const wolfTime2 = await fetch(
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=may+20+2025&output=json`
+  );
+  const hBannerTime = await wolfTime2.json();
+  const wolfTime3 = await fetch(
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=may+14+2025&output=json`
+  );
+  const zBannerTime = await wolfTime3.json();
   const exchange = await fetch(
-    "https://v6.exchangerate-api.com/v6/6edfe27e296a34c3ec9282f9/latest/usd"
+    `https://v6.exchangerate-api.com/v6/${tokenExchange}/latest/usd`
   );
   const usd = await exchange.json();
   const exchange2 = await fetch(
-    "https://v6.exchangerate-api.com/v6/6edfe27e296a34c3ec9282f9/latest/cad"
+    `https://v6.exchangerate-api.com/v6/${tokenExchange}/latest/cad`
   );
   const cad = await exchange2.json();
   const exchange3 = await fetch(
-    "https://v6.exchangerate-api.com/v6/6edfe27e296a34c3ec9282f9/latest/gbp"
+    `https://v6.exchangerate-api.com/v6/${tokenExchange}/latest/gbp`
   );
   const gbp = await exchange3.json();
   const exchange4 = await fetch(
-    "https://v6.exchangerate-api.com/v6/6edfe27e296a34c3ec9282f9/latest/eur"
+    `https://v6.exchangerate-api.com/v6/${tokenExchange}/latest/eur`
   );
   const eur = await exchange4.json();
   const quote = await fetch("https://zenquotes.io/api/random");
@@ -28,39 +38,41 @@ async function daily() {
   const word = await fetch("https://random-word.ryanrk.com/api/jp/word/random");
   const jpword = await word.json();
   return `
-    ***GOOD MORNING NAGANO***  <:arukumawink:981358951830552606>
+  :01H12ZH32NFRESS95RA5NRCG0N: ***GOOD DAY ReVoYo!*** :01H12ZH32NFRESS95RA5NRCG0N:
     ${astronomy?.queryresult?.pods?.[1]?.subpods?.[0]?.plaintext}
     ${astronomy?.queryresult?.pods?.[3]?.subpods?.[1]?.plaintext} | ${astronomy?.queryresult?.pods?.[3]?.subpods?.[0]?.plaintext}
     ${astronomy?.queryresult?.pods?.[7]?.subpods?.[0]?.plaintext}
-
-    <:mora:991587094512283708> **Exchange Rates**
+    
+    :salt: **Banners**
+    ***Genshin Banner | 5.5 Phase 2: Xilonen, Venti, Beidou, Yanfei, Faruzan***
+    Ends on ${gBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
+    Time left: ${gBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
+    
+    ***HSR Banner | 3.2 Phase 1: Anaxa DEBUT, Dr. Ratio, Dan Heng, Serval, Moze***
+    Ends on ${hBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
+    Time left: ${hBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
+    
+    ***ZZZ Banner | 1.7 Phase 1: Vivian DEBUT, Jane, Seth, Piper***
+    Ends on ${zBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
+    Time left: ${zBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
+    
+    :01HM7S2WR7G8W1N4QP0RR9K2JC: **Exchange Rates**
     USD/JPY: ${usd.conversion_rates.JPY}
     CAD/JPY: ${cad.conversion_rates.JPY}
     GBP/JPY: ${gbp.conversion_rates.JPY}
     EUR/JPY: ${eur.conversion_rates.JPY}
-
-    <:primogem:981354535522009161> **Today's Weather:**
-    Sky condition: ${nagano?.description}
-    Current temp: ${nagano?.currentConditions?.temp}C
-    Feels like: ${nagano?.currentConditions?.feelslike}C
-    Humidity: ${nagano?.currentConditions?.humidity}%
-    Wind speed: ${nagano?.currentConditions?.windspeed}Km/H
-    Wind gust: ${nagano?.currentConditions?.windgust}Km/H
-    Pressure: ${nagano?.currentConditions?.pressure}mb
-
-    <:primogem:981354535522009161> **Daylight Info:**
-    Sunrise: ${nagano?.currentConditions?.sunrise}
-    Sunset: ${nagano?.currentConditions?.sunset}
-
-    <:primogem:981354535522009161> **Moon Phase:**
+    
+    :crescent_moon: **Moon Phase:**
     ${astronomy?.queryresult?.pods?.[6]?.subpods?.[0]?.plaintext}
-
-    <:primogem:981354535522009161> ***Quote of the Day:***
-    *${motivation?.[0]?.q}*
-    *-${motivation?.[0]?.a}*
-
-    <:primogem:981354535522009161> ***Japanese Word of the Day:***
+    
+    **Quote of the Day:**
+    *${motivation?.[0]?.q} 
+    -${motivation?.[0]?.a}*
+    
+    **Japanese Word of the Day:**
     ${jpword?.[0]}
+    
+    *Pinging <@01H0M62PT3AXCQY4V0CAP08CDC> to notify of function execution, Misaka explains with increasing irritation.*
     `;
 }
 module.exports.daily = daily;
