@@ -2,15 +2,15 @@ const { tokenWolf, tokenExchange } = require("./config.json");
 
 async function daily() {
   const wolfTime1 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=june+17+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=july+8+2025&output=json`
   );
   const gBannerTime = await wolfTime1.json();
   const wolfTime2 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=june+11+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=june+30+2025&output=json`
   );
   const hBannerTime = await wolfTime2.json();
   const wolfTime3 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=june+5+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=june+25+2025&output=json`
   );
   const zBannerTime = await wolfTime3.json();
   const exchange = await fetch(
@@ -37,15 +37,15 @@ async function daily() {
   ***Good Day Everyone! Here is Your Daily Hoyo Banner Update:***
     
     :salt: **Banners**
-    ***Genshin Banner | 5.6 Phase 2: Kinich, Raiden, Thoma, Sara, Lynette***
+    ***Genshin Banner | 5.7 Phase 1: Skirk DEBUT, Shenhe, Dahlia, Candace, Diona***
     Ends on ${gBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${gBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
-    ***HSR Banner | 3.3 Phase 1: Hyacine DEBUT, The Herta, Misha, Serval, Natasha***
+    ***HSR Banner | 3.3 Phase 2: Cipher DEBUT, Agalea, Qingque, Sushang, Xueyi***
     Ends on ${hBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${hBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
-    ***ZZZ Banner | 1.7 Phase 2: Hugo DEBUT, Lighter, Soukaku, Anton***
+    ***ZZZ Banner | 2.0 Phase 1: Yixuan DEBUT, Astra, Pan Yinhu DEBUT, Pulchra***
     Ends on ${zBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${zBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
