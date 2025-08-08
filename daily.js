@@ -10,7 +10,7 @@ async function daily() {
   );
   const hBannerTime = await wolfTime2.json();
   const wolfTime3 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=august+6+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=september+3+2025&output=json`
   );
   const zBannerTime = await wolfTime3.json();
   const exchange = await fetch(
@@ -45,7 +45,7 @@ async function daily() {
     Ends on ${hBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${hBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
-    ***ZZZ Banner | 2.1 Phase 1: Yuzuha DEBUT, Miyabi, Piper, Billy***
+    ***ZZZ Banner | 2.1 Phase 1: Alice DEBUT, Yanagi, Seth, Soukaku***
     Ends on ${zBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${zBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
