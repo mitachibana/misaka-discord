@@ -6,7 +6,7 @@ async function daily() {
   );
   const gBannerTime = await wolfTime1.json();
   const wolfTime2 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=august+12+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=september+2+2025&output=json`
   );
   const hBannerTime = await wolfTime2.json();
   const wolfTime3 = await fetch(
@@ -41,7 +41,7 @@ async function daily() {
     Ends on ${gBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${gBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
-    ***HSR Banner | 3.4 Phase 2: Firefly, Blade, Jingliu, Archer & Saber (COLLAB), Luka, Lynx, Hanya***
+    ***HSR Banner | 3.5 Phase 1: Hysilens, Kafka, Archer & Saber (COLLAB), Asta, Arlan, Hook***
     Ends on ${hBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${hBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
