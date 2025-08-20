@@ -2,7 +2,7 @@ const { tokenWolf, tokenExchange } = require("./config.json");
 
 async function daily() {
   const wolfTime1 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=august+19+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=september+9+2025&output=json`
   );
   const gBannerTime = await wolfTime1.json();
   const wolfTime2 = await fetch(
@@ -37,7 +37,7 @@ async function daily() {
   ***Good Day Everyone! Here is Your Daily Hoyo Banner Update:***
     
     :salt: **Banners**
-    ***Genshin Banner | 5.8 Phase 1: Ineffa DEBUT, Citlali, Xingqiu, Ficshl, Setos***
+    ***Genshin Banner | 5.8 Phase 2: Mualani, Chasca, Bennett, Ororon, Ifa***
     Ends on ${gBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${gBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
