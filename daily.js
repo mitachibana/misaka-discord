@@ -6,11 +6,11 @@ async function daily() {
   );
   const gBannerTime = await wolfTime1.json();
   const wolfTime2 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=september+2+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=september+23+2025&output=json`
   );
   const hBannerTime = await wolfTime2.json();
   const wolfTime3 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=september+3+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=september+24+2025&output=json`
   );
   const zBannerTime = await wolfTime3.json();
   const exchange = await fetch(
@@ -41,11 +41,11 @@ async function daily() {
     Ends on ${gBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${gBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
-    ***HSR Banner | 3.5 Phase 1: Hysilens, Kafka, Archer & Saber (COLLAB), Asta, Arlan, Hook***
+    ***HSR Banner | 3.5 Phase 2: Cerydra DEBUT, Silver Wolf, Archer & Saber (COLLAB), Asta, Arlan, Hook***
     Ends on ${hBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${hBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
-    ***ZZZ Banner | 2.1 Phase 1: Alice DEBUT, Yanagi, Seth, Soukaku***
+    ***ZZZ Banner | 2.2 Phase 1: Seed DEBUT, Trigger, Anby, Nicole***
     Ends on ${zBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${zBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
@@ -66,3 +66,4 @@ async function daily() {
     `;
 }
 module.exports.daily = daily;
+
