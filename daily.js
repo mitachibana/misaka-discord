@@ -31,8 +31,6 @@ async function daily() {
   const eur = await exchange4.json();
   const quote = await fetch("https://zenquotes.io/api/random");
   const motivation = await quote.json();
-  const word = await fetch("https://random-word.ryanrk.com/api/jp/word/random");
-  const jpword = await word.json();
   return `
   ***Good Day Everyone! Here is Your Daily Hoyo Banner Update:***
     
@@ -59,12 +57,10 @@ async function daily() {
     *${motivation?.[0]?.q} 
     -${motivation?.[0]?.a}*
     
-    **Japanese Word of the Day:**
-    ${jpword?.[0]}
-    
     * If you have subscribed to this post, you have been pinged: <@&1369210429859041392>. If you would like to subscribe to this post in order to get a convenient push notification each day, please visit <#1012719178614046760>*
     `;
 }
 module.exports.daily = daily;
+
 
 
