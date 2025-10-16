@@ -6,11 +6,11 @@ async function daily() {
   );
   const gBannerTime = await wolfTime1.json();
   const wolfTime2 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=october+14+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=november+4+2025&output=json`
   );
   const hBannerTime = await wolfTime2.json();
   const wolfTime3 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=october+14+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=november+5+2025&output=json`
   );
   const zBannerTime = await wolfTime3.json();
   const exchange = await fetch(
@@ -39,11 +39,11 @@ async function daily() {
     Ends on ${gBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${gBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
-    ***HSR Banner | 3.6 Phase 1: Evernight DEBUT, The Herta, Archer & Saber (COLLAB), Misha, Guinaifen, Xueyi***
+    ***HSR Banner | 3.6 Phase 2: Permansor Terrae DEBUT, Anaxa, Archer & Saber (COLLAB), Sushang, Hanya, Serval***
     Ends on ${hBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${hBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
-    ***ZZZ Banner | 2.2 Phase 2: Orphie and Magus DEBUT, Evelyn, Anton, Lucy***
+    ***ZZZ Banner | 2.3 Phase 1: Lucia DEBUT, Vivian, Manato DEBUT, Piper***
     Ends on ${zBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${zBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
@@ -61,6 +61,7 @@ async function daily() {
     `;
 }
 module.exports.daily = daily;
+
 
 
 
