@@ -1,16 +1,16 @@
 const { tokenWolf, tokenExchange } = require("./config.json");
-
+const { gBannerEnd, gDescription, hBannerEnd, hDescription, zBannerEnd, zDescription } = require("./config-daily.json");
 async function daily() {
   const wolfTime1 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=november+11+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=${gBannerEnd}&output=json`
   );
   const gBannerTime = await wolfTime1.json();
   const wolfTime2 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=november+4+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=${hBannerEnd}&output=json`
   );
   const hBannerTime = await wolfTime2.json();
   const wolfTime3 = await fetch(
-    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=november+5+2025&output=json`
+    `http://api.wolframalpha.com/v2/query?appid=${tokenWolf}&input=${zBannerEnd}&output=json`
   );
   const zBannerTime = await wolfTime3.json();
   const exchange = await fetch(
@@ -35,15 +35,15 @@ async function daily() {
   ***Good Day Everyone! Here is Your Daily Hoyo Banner Update:***
     
     :salt: **Banners**
-    ***Genshin Banner | 6.1 Luna 2 Phase 1: Nefer DEBUT, Furina <3, Xingqiu, Collei, Yao Yao***
+    ***Genshin Banner | ${gDescription}***
     Ends on ${gBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${gBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
-    ***HSR Banner | 3.6 Phase 2: Permansor Terrae DEBUT, Anaxa, Archer & Saber (COLLAB), Sushang, Hanya, Serval***
+    ***HSR Banner | ${hDescription}***
     Ends on ${hBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${hBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
-    ***ZZZ Banner | 2.3 Phase 1: Lucia DEBUT, Vivian, Manato DEBUT, Piper***
+    ***ZZZ Banner | ${zDescription}***
     Ends on ${zBannerTime?.queryresult?.pods?.[0]?.subpods?.[0]?.plaintext}
     Time left: ${zBannerTime?.queryresult?.pods?.[2]?.subpods?.[0]?.plaintext}
     
