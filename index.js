@@ -44,7 +44,7 @@ client.once(Events.ClientReady, (readyClient) => {
 
 async function greeting() {
   var date = new Date();
-  if (date.getHours() === 23 && date.getMinutes() === 00) {
+  if (date.getHours() === 4 && date.getMinutes() === 03) {
     client.channels.cache.get(channelGreeting).send(`${await daily()}`);
     console.info(`Daily greeting sent! Post time: ${Date()}`);
   }
@@ -79,6 +79,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 client.login(token);
+
 
 
 
