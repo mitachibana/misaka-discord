@@ -8,7 +8,7 @@ const {
   ActivityType,
 } = require("discord.js");
 const { token } = require("./config.json");
-const { channelGreeting } = require("./config-daily.json");
+const { discordChannel1 } = require("./config-daily.json");
 const { daily } = require("./daily");
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -45,7 +45,7 @@ client.once(Events.ClientReady, (readyClient) => {
 async function greeting() {
   var date = new Date();
   if (date.getHours() === 22 && date.getMinutes() === 10) {
-    client.channels.cache.get(channelGreeting).send(`${await daily()}`);
+    client.channels.cache.get(discordChannel1).send(`${await daily()}`);
     console.info(`Daily greeting sent! Post time: ${Date()}`);
   }
 }
@@ -79,6 +79,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 client.login(token);
+
 
 
 
